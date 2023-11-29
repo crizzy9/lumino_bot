@@ -8,10 +8,10 @@ square_length = 3
 calibration_size = (7, 7)
 
 #采集标定图像存储路径
-save_path = '/home/spadia/MasterPi/CameraCalibration/calibration_images/'
+save_path = '/home/spadia/masterpi-car/MasterPi/CameraCalibration/calibration_images/'
 
 #标定参数存储路径
-calibration_param_path = '/home/spadia/MasterPi/CameraCalibration/calibration_param'
+calibration_param_path = '/home/spadia/masterpi-car/MasterPi/CameraCalibration/calibration_param'
 
 #映射参数存储路径
-map_param_path = '/home/spadia/MasterPi/CameraCalibration/map_param'
+map_param_path = '/home/spadia/masterpi-car/MasterPi/CameraCalibration/map_param'

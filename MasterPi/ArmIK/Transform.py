@@ -2,7 +2,7 @@
 # encoding:utf-8
 import cv2
 import sys
-sys.path.append('/home/spadia/MasterPi/')
+sys.path.append('/home/spadia/masterpi-car/MasterPi/')
 import math
 import numpy as np
 from CameraCalibration.CalibrationConfig import *

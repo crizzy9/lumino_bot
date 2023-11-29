@@ -176,7 +176,7 @@ if __name__ == "__main__":
             os.system("pkill hostapd > /dev/null 2>&1")
             os.system("pkill wpa_supplicant > /dev/null 2>&1")
             logger.info("Connecting to " + HW_WIFI_STA_SSID)
-            with open("/home/spadia/hiwonder-toolbox/wpa_supplicant.conf") as f:
+            with open("/home/spadia/masterpi-car/hiwonder-toolbox/wpa_supplicant.conf") as f:
                 a = f.readlines()
             args = "\nnetwork={{\n\tssid=\"{}\"\n\tpsk=\"{}\"\n\tkey_mgmt=WPA-PSK\n}}".format(HW_WIFI_STA_SSID, HW_WIFI_STA_PASSWORD)
             with open("/etc/wpa_supplicant/wpa_supplicant.conf", 'w') as f:

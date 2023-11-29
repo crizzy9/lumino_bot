@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 import sys
-sys.path.append('/home/spadia/MasterPi/')
+sys.path.append('/home/spadia/masterpi-car/MasterPi/')
 import time
 import yaml_handle
 import RPi.GPIO as GPIO

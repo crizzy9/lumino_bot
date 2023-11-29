@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # encoding:utf-8
 import sys
-sys.path.append('/home/spadia/MasterPi/')
+sys.path.append('/home/spadia/masterpi-car/MasterPi/')
 import time
 import numpy as np
 from math import sqrt

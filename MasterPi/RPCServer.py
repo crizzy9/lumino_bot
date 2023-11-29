@@ -2,7 +2,7 @@
 # coding=utf8
 import os
 import sys
-sys.path.append('/home/spadia/MasterPi/')
+sys.path.append('/home/spadia/masterpi-car/MasterPi/')
 import time
 import logging
 import threading

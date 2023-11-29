@@ -5,7 +5,7 @@ import time
 import threading
 import sqlite3 as sql
 from SetPWMServo import *
-sys.path.append('/home/spadia/MasterPi/')
+sys.path.append('/home/spadia/masterpi-car/MasterPi/')
 import yaml_handle
 
 runningAction = False
@@ -28,7 +28,7 @@ def runAction(actNum):
     global online_action_times
     if actNum is None:
         return
-    actNum = "/home/spadia/MasterPi/ActionGroups/" + actNum + ".d6a"
+    actNum = "/home/spadia/masterpi-car/MasterPi/ActionGroups/" + actNum + ".d6a"
     stopRunning = False
     if os.path.exists(actNum) is True:
         if runningAction is False:

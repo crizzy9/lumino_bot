@@ -91,7 +91,7 @@ def startTruckPi():
     threading.Thread(target=MjpgServer.startMjpgServer,
                      daemon=True).start()  # mjpg流服务器
     
-    loading_picture = cv2.imread('/home/spadia/MasterPi/CameraCalibration/loading.jpg')
+    loading_picture = cv2.imread('/home/spadia/masterpi-car/MasterPi/CameraCalibration/loading.jpg')
     cam = Camera.Camera()  # 相机读取
     cam.camera_open()
     Running.cam = cam
