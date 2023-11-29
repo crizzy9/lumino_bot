@@ -13,18 +13,18 @@ if sys.version_info.major == 2:
     
 print('''
 **********************************************************
-********功能:幻尔科技树莓派扩展板，电机控制例程**********
+********Function: Magic Technology Raspberry Pi expansion board, motor control routine**********
 **********************************************************
 ----------------------------------------------------------
 Official website:https://www.hiwonder.com
 Online mall:https://hiwonder.tmall.com
 ----------------------------------------------------------
 Tips:
- * 按下Ctrl+C可关闭此次程序运行，若失败请多次尝试！
+ * Press Ctrl+C to turn off this program. If you fail, try many times!
 ----------------------------------------------------------
 ''')
 
-# 关闭所有电机
+# Turn off all motors
 def MotorStop():
     Board.setMotor(1, 0) 
     Board.setMotor(2, 0)
@@ -32,13 +32,13 @@ def MotorStop():
     Board.setMotor(4, 0)
 
 start = True
-#关闭前处理
+#Treatment before turning off
 def Stop(signum, frame):
     global start
 
     start = False
-    print('关闭中...')
-    MotorStop()  # 关闭所有电机
+    print('Closure...')
+    MotorStop()  # Turn off all motors
     
 
 signal.signal(signal.SIGINT, Stop)
@@ -46,16 +46,16 @@ signal.signal(signal.SIGINT, Stop)
 if __name__ == '__main__':
     
     while True:
-        Board.setMotor(1, 35)  #设置1号电机速度35
+        Board.setMotor(1, 35)  #Set No. 1 motor speed 35
         time.sleep(1)
-        Board.setMotor(1, 60)  #设置1号电机速度60
+        Board.setMotor(1, 60)  #Set the speed of No. 1 motor 60
         time.sleep(2)
-        Board.setMotor(1, 90)  #设置1号电机速度90
+        Board.setMotor(1, 90)  #Set the speed of No. 1 motor 90
         time.sleep(3)    
         
         if not start:
-            MotorStop()  # 关闭所有电机
-            print('已关闭')
+            MotorStop()  # Turn off all motors
+            print('closed')
             break
     
     

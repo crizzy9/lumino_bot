@@ -13,37 +13,37 @@ if sys.version_info.major == 2:
     
 print('''
 **********************************************************
-********功能:幻尔科技树莓派扩展板，PWM舵机控制例程**********
+********Function: Magic Technology Raspberry Pi expansion board, PWM steering gear control routine**********
 **********************************************************
 ----------------------------------------------------------
 Official website:https://www.hiwonder.com
 Online mall:https://hiwonder.tmall.com
 ----------------------------------------------------------
 Tips:
- * 按下Ctrl+C可关闭此次程序运行，若失败请多次尝试！
+ * Press Ctrl+C to turn off this program. If you fail, try many times!
 ----------------------------------------------------------
 ''')
 
 start = True
-#关闭前处理
+#Treatment before turning off
 def Stop(signum, frame):
     global start
 
     start = False
-    print('关闭中...')
+    print('Closure...')
 
 signal.signal(signal.SIGINT, Stop)
 
 if __name__ == '__main__':
     
     while True:
-        Board.setPWMServoPulse(1, 1500, 1000) # 设置1号舵机脉宽为1500，运行时间为1000毫秒
+        Board.setPWMServoPulse(1, 1500, 1000) # Set the pulse of No. 1 rudder to 1500, and the running time is 1000 milliseconds
         time.sleep(1)
-        Board.setPWMServoPulse(1, 2500, 1000) # 设置1号舵机脉宽为2500，运行时间为1000毫秒
+        Board.setPWMServoPulse(1, 2500, 1000) # Set the pulse width of the 1st rudder to 2500, and the running time is 1000 milliseconds
         time.sleep(1)
         
         if not start:
-            Board.setPWMServoPulse(1, 1500, 1000) # 设置1号舵机脉宽为1500，运行时间为1000毫秒
+            Board.setPWMServoPulse(1, 1500, 1000) # Set the pulse of No. 1 rudder to 1500, and the running time is 1000 milliseconds
             time.sleep(1)
             print('已关闭')
             break

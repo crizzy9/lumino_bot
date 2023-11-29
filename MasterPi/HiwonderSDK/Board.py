@@ -9,7 +9,7 @@ from smbus2 import SMBus, i2c_msg
 from rpi_ws281x import PixelStrip
 from rpi_ws281x import Color as PixelColor
 
-#幻尔科技raspberrypi扩展板sdk#
+#Magic Technology Raspberrypi Extension SDK#
 if sys.version_info.major == 2:
     print('Please run this program with python3!')
     sys.exit(0)
@@ -189,17 +189,17 @@ def setBuzzer(new_state):
 
 def setBusServoID(oldid, newid):
     """
-    配置舵机id号, 出厂默认为1
-    :param oldid: 原来的id， 出厂默认为1
-    :param newid: 新的id
+    Configure the steering gear ID number, the factory default is 1
+    :param oldid: Original ID, the factory default is 1
+    :param newid: New ID
     """
     serial_serro_wirte_cmd(oldid, LOBOT_SERVO_ID_WRITE, newid)
 
 def getBusServoID(id=None):
     """
-    读取串口舵机id
-    :param id: 默认为空
-    :return: 返回舵机id
+    Read the serial steering gear ID
+    :param id: Default is empty
+    :return: Return to the steering gear ID
     """
     
     while True:
@@ -214,10 +214,10 @@ def getBusServoID(id=None):
 
 def setBusServoPulse(id, pulse, use_time):
     """
-    驱动串口舵机转到指定位置
-    :param id: 要驱动的舵机id
-    :pulse: 位置
-    :use_time: 转动需要的时间
+    Drive serial port steering gear transfer to the designated location
+    :param id: The steering gear ID to drive
+    :pulse: Location
+    :use_time: Time to rotate
     """
 
     pulse = 0 if pulse < 0 else pulse
@@ -228,7 +228,7 @@ def setBusServoPulse(id, pulse, use_time):
 
 def stopBusServo(id=None):
     '''
-    停止舵机运行
+    Stop the motor engine operation
     :param id:
     :return:
     '''
@@ -236,31 +236,31 @@ def stopBusServo(id=None):
 
 def setBusServoDeviation(id, d=0):
     """
-    调整偏差
-    :param id: 舵机id
-    :param d:  偏差
+    Deviation
+    :param id: Steering gear ID
+    :param d:  deviation
     """
     serial_serro_wirte_cmd(id, LOBOT_SERVO_ANGLE_OFFSET_ADJUST, d)
 
 def saveBusServoDeviation(id):
     """
-    配置偏差，掉电保护
-    :param id: 舵机id
+    Configuration deviation, power loss protection
+    :param id: Steering gear ID
     """
     serial_serro_wirte_cmd(id, LOBOT_SERVO_ANGLE_OFFSET_WRITE)
 
 time_out = 50
 def getBusServoDeviation(id):
     '''
-    读取偏差值
-    :param id: 舵机号
+    Reading deviation
+    :param id: Rudder number
     :return:
     '''
-    # 发送读取偏差指令
+    # Send reading deviation instruction
     count = 0
     while True:
         serial_servo_read_cmd(id, LOBOT_SERVO_ANGLE_OFFSET_READ)
-        # 获取
+        # Obtain
         msg = serial_servo_get_rmsg(LOBOT_SERVO_ANGLE_OFFSET_READ)
         count += 1
         if msg is not None:
@@ -270,7 +270,7 @@ def getBusServoDeviation(id):
 
 def setBusServoAngleLimit(id, low, high):
     '''
-    设置舵机转动范围
+    Set the scope of the turning machine rotation
     :param id:
     :param low:
     :param high:
@@ -280,9 +280,9 @@ def setBusServoAngleLimit(id, low, high):
 
 def getBusServoAngleLimit(id):
     '''
-    读取舵机转动范围
+    Read the scope of rotation of the steering gear
     :param id:
-    :return: 返回元祖 0： 低位  1： 高位
+    :return: Return to Yuanzu 0: Low 1: High
     '''
     
     while True:
@@ -294,7 +294,7 @@ def getBusServoAngleLimit(id):
 
 def setBusServoVinLimit(id, low, high):
     '''
-    设置舵机电压范围
+    Set the range of the steering gear voltage
     :param id:
     :param low:
     :param high:
@@ -304,9 +304,9 @@ def setBusServoVinLimit(id, low, high):
 
 def getBusServoVinLimit(id):
     '''
-    读取舵机转动范围
+    Read the scope of rotation of the steering gear
     :param id:
-    :return: 返回元祖 0： 低位  1： 高位
+    :return: Return to Yuanzu 0: Low 1: High
     '''
     while True:
         serial_servo_read_cmd(id, LOBOT_SERVO_VIN_LIMIT_READ)
@@ -316,7 +316,7 @@ def getBusServoVinLimit(id):
 
 def setBusServoMaxTemp(id, m_temp):
     '''
-    设置舵机最高温度报警
+    Set the maximum temperature alarm of the steering gear
     :param id:
     :param m_temp:
     :return:
@@ -325,7 +325,7 @@ def setBusServoMaxTemp(id, m_temp):
 
 def getBusServoTempLimit(id):
     '''
-    读取舵机温度报警范围
+    Reading the scope of the alarm of the steering gear
     :param id:
     :return:
     '''
@@ -338,7 +338,7 @@ def getBusServoTempLimit(id):
 
 def getBusServoPulse(id):
     '''
-    读取舵机当前位置
+    Read the current position of the steering gear
     :param id:
     :return:
     '''
@@ -350,7 +350,7 @@ def getBusServoPulse(id):
 
 def getBusServoTemp(id):
     '''
-    读取舵机温度
+    Read the temperature of the steering gear
     :param id:
     :return:
     '''
@@ -362,7 +362,7 @@ def getBusServoTemp(id):
 
 def getBusServoVin(id):
     '''
-    读取舵机电压
+    Read the rudder
     :param id:
     :return:
     '''
@@ -373,16 +373,16 @@ def getBusServoVin(id):
             return msg
 
 def restBusServoPulse(oldid):
-    # 舵机清零偏差和P值中位（500）
-    serial_servo_set_deviation(oldid, 0)    # 清零偏差
+    # The zero deviation and P value of the steering gear (500)
+    serial_servo_set_deviation(oldid, 0)    # Zero deviation
     time.sleep(0.1)
-    serial_serro_wirte_cmd(oldid, LOBOT_SERVO_MOVE_TIME_WRITE, 500, 100)    # 中位
+    serial_serro_wirte_cmd(oldid, LOBOT_SERVO_MOVE_TIME_WRITE, 500, 100)    # Median
 
-##掉电
+##Power
 def unloadBusServo(id):
     serial_serro_wirte_cmd(id, LOBOT_SERVO_LOAD_OR_UNLOAD_WRITE, 0)
 
-##读取是否掉电
+##Do you read whether to power out?
 def getBusServoLoadStatus(id):
     while True:
         serial_servo_read_cmd(id, LOBOT_SERVO_LOAD_OR_UNLOAD_READ)

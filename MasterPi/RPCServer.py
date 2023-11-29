@@ -88,7 +88,7 @@ def SetMovementAngle(angle):
         ret = (False, __RPC_E03, 'SetMovementAngle')
         return ret
 
-# 电机控制
+# motor control
 @dispatcher.add_method
 def SetBrushMotor(*args, **kwargs):
     ret = (True, (), 'SetBrushMotor')
@@ -112,7 +112,7 @@ def SetBrushMotor(*args, **kwargs):
         ret = (False, __RPC_E03, 'SetBrushMotor')
     return ret
 
-# 获取超声波测距
+# Get ultrasonic ranging
 @dispatcher.add_method
 def GetSonarDistance():
     global HWSONAR
@@ -123,7 +123,7 @@ def GetSonarDistance():
         ret = (False, __RPC_E03, 'GetSonarDistance')
     return ret
 
-# 获取当前电池电压
+# Get the current battery voltage
 @dispatcher.add_method
 def GetBatteryVoltage():
     ret = (True, 0, 'GetBatteryVoltage')
@@ -134,7 +134,7 @@ def GetBatteryVoltage():
         ret = (False, __RPC_E03, 'GetBatteryVoltage')
     return ret
 
-# 设置超声波rgb灯模式
+# Set the ultrasonic RGB light mode
 @dispatcher.add_method
 def SetSonarRGBMode(mode = 0):
     global HWSONAR
@@ -142,7 +142,7 @@ def SetSonarRGBMode(mode = 0):
     HWSONAR.setRGBMode(mode)
     return (True, (mode,), 'SetSonarRGBMode')
 
-# 设置超声波rgb灯颜色
+# Set the ultrasonic RGB light color
 @dispatcher.add_method
 def SetSonarRGB(index, r, g, b):
     global HWSONAR
@@ -154,7 +154,7 @@ def SetSonarRGB(index, r, g, b):
         HWSONAR.setPixelColor(index, (r, g, b))
     return (True, (r, g, b), 'SetSonarRGB')
 
-# 设置超声波闪烁的颜色和周期
+# Set up the color and cycle of ultrasonic flashing
 @dispatcher.add_method
 def SetSonarRGBBreathCycle(index, color, cycle):
     global HWSONAR
@@ -162,7 +162,7 @@ def SetSonarRGBBreathCycle(index, color, cycle):
     HWSONAR.setBreathCycle(index, color, cycle)
     return (True, (index, color, cycle), 'SetSonarRGBBreathCycle')
 
-# 设置超声波开始闪烁
+# Set up ultrasound and start flashing
 @dispatcher.add_method
 def SetSonarRGBStartSymphony():
     global HWSONAR
@@ -170,19 +170,19 @@ def SetSonarRGBStartSymphony():
     HWSONAR.startSymphony()    
     return (True, (), 'SetSonarRGBStartSymphony')
 
-# 设置避障速度
+# Set the obstacle avoidance speed
 @dispatcher.add_method
 def SetAvoidanceSpeed(speed=50):
     print(speed)
     return runbymainth(Avoidan.setSpeed, (speed,))
 
-# 设置避障阈值
+# Set the barrier -avoiding threshold
 @dispatcher.add_method
 def SetSonarDistanceThreshold(new_threshold=30):
     print(new_threshold)
     return runbymainth(Avoidan.setThreshold, (new_threshold,))
 
-# 获取当前避障阈值
+# Get the current obstacle avoidance threshold
 @dispatcher.add_method
 def GetSonarDistanceThreshold():
     return runbymainth(Avoidan.getThreshold, ())
@@ -445,20 +445,20 @@ def Avoidance(*target_color):
     return runbymainth(Avoidan.setTargetColor, target_color)
 
 
-# 设置颜色阈值
-# 参数：颜色lab
-# 例如：[{'red': ((0, 0, 0), (255, 255, 255))}]
+# Set the color threshold
+# Parameter: color lab
+# For example: [{'red': ((0, 0, 0), (255, 255, 255))}]
 @dispatcher.add_method
 def SetLABValue(*lab_value):
     #print(lab_value)
     return runbymainth(lab_adjust.setLABValue, lab_value)
 
-# 保存颜色阈值
+# Save color threshold
 @dispatcher.add_method
 def GetLABValue():
     return (True, lab_adjust.getLABValue()[1], 'GetLABValue')
 
-# 保存颜色阈值
+# Save color threshold
 @dispatcher.add_method
 def SaveLABValue(color=''):
     return runbymainth(lab_adjust.saveLABValue, (color, ))

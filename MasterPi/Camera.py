@@ -19,10 +19,10 @@ class Camera:
         self.height = resolution[1]
         self.frame = None
         self.opened = False
-        #加载参数
+        #Load parameter
         self.param_data = np.load(calibration_param_path + '.npz')
         
-        #获取参数
+        #Get parameters
         self.mtx = self.param_data['mtx_array']
         self.dist = self.param_data['dist_array']
         self.newcameramtx, roi = cv2.getOptimalNewCameraMatrix(self.mtx, self.dist, (self.width, self.height), 0, (self.width, self.height))
@@ -39,7 +39,7 @@ class Camera:
             self.cap.set(cv2.CAP_PROP_SATURATION, 40)
             self.opened = True
         except Exception as e:
-            print('打开摄像头失败:', e)
+            print('Failure to open the camera:', e)
 
     def camera_close(self):
         try:
@@ -50,7 +50,7 @@ class Camera:
                 time.sleep(0.05)
             self.cap = None
         except Exception as e:
-            print('关闭摄像头失败:', e)
+            print('Closing the camera failed:', e)
 
     def camera_task(self):
         while True:
@@ -76,7 +76,7 @@ class Camera:
                 else:
                     time.sleep(0.01)
             except Exception as e:
-                print('获取摄像头画面出错:', e)
+                print('Get the camera screen error:', e)
                 time.sleep(0.01)
 
 if __name__ == '__main__':

@@ -5,7 +5,7 @@ import time
 import HiwonderSDK.Board
 from smbus2 import SMBus, i2c_msg
 
-# 幻尔科技iic超声波库
+# Magic Technology IIC ultrasonic library
 
 if sys.version_info.major == 2:
     print('Please run this program with python3!')

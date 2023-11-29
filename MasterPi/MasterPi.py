@@ -21,7 +21,7 @@ if sys.version_info.major == 2:
     print('Please run this program with python3!')
     sys.exit(0)
 
-HWSONAR = Sonar.Sonar() #超声波传感器
+HWSONAR = Sonar.Sonar() #Ultrasonic sensor
 
 QUEUE_RPC = queue.Queue(10)
 
@@ -61,7 +61,7 @@ def voltageDetection():
         print('Error', e)
             
         
-# 运行子线程
+# Run the sub -thread
 VD = threading.Thread(target=voltageDetection)
 VD.setDaemon(True)
 VD.start()
@@ -72,13 +72,13 @@ def startTruckPi():
     global voltage
     
     previous_time = 0.00
-    # 超声波开启后默认关闭灯
+    # After the ultrasound is turned on, turn off the light by default
     HWSONAR.setRGBMode(0)
     HWSONAR.setPixelColor(0, Board.PixelColor(0,0,0))
     HWSONAR.setPixelColor(1, Board.PixelColor(0,0,0))    
     HWSONAR.show()
     
-    # 玩法调用的超声波
+    # Ultrasound of gameplay call
     RemoteControl.HWSONAR = HWSONAR
     RemoteControl.init()
     RPCServer.HWSONAR = HWSONAR
@@ -87,29 +87,29 @@ def startTruckPi():
     RPCServer.QUEUE = QUEUE_RPC
 
     threading.Thread(target=RPCServer.startRPCServer,
-                     daemon=True).start()  # rpc服务器
+                     daemon=True).start()  # RPC server
     threading.Thread(target=MjpgServer.startMjpgServer,
-                     daemon=True).start()  # mjpg流服务器
+                     daemon=True).start()  # mjpg stream server
     
     loading_picture = cv2.imread('/home/spadia/masterpi-car/MasterPi/CameraCalibration/loading.jpg')
-    cam = Camera.Camera()  # 相机读取
+    cam = Camera.Camera()  # Camera read
     cam.camera_open()
     Running.cam = cam
 
     while True:
         
         time.sleep(0.03)
-        # 执行需要在本线程中执行的RPC命令
+        # The RPC command that requires the execution of this thread is executed
         while True:
             try:
                 req, ret = QUEUE_RPC.get(False)
                 event, params, *_ = ret
-                ret[2] = req(params)  # 执行RPC命令
+                ret[2] = req(params)  # Execute the RPC command
                 event.set()
             except:
                 break
         #####
-        # 执行功能玩法程序：
+        # Perform function gameplay program:
         try:
             if Running.RunningFunc > 0 and Running.RunningFunc <= 9:
                 if cam.frame is not None:

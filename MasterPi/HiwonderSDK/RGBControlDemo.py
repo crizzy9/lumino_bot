@@ -4,26 +4,26 @@ import signal
 
 print('''
 **********************************************************
-********功能:幻尔科技树莓派扩展板，RGB灯控制例程**********
+********Function: Magic Technology Raspberry Pi expansion board, RGB light control routine**********
 **********************************************************
 ----------------------------------------------------------
 Official website:https://www.hiwonder.com
 Online mall:https://hiwonder.tmall.com
 ----------------------------------------------------------
 Tips:
- * 按下Ctrl+C可关闭此次程序运行，若失败请多次尝试！
+ * Press Ctrl+C to turn off this program. If you fail, try many times!
 ----------------------------------------------------------
 ''')
 
 start = True
-#关闭前处理
+#Treatment before turning off
 def Stop(signum, frame):
     global start
 
     start = False
-    print('关闭中...')
+    print('Closure...')
 
-#先将所有灯关闭
+#Turn all the lights first
 Board.RGB.setPixelColor(0, Board.PixelColor(0, 0, 0))
 Board.RGB.setPixelColor(1, Board.PixelColor(0, 0, 0))
 Board.RGB.show()
@@ -31,34 +31,34 @@ Board.RGB.show()
 signal.signal(signal.SIGINT, Stop)
 
 while True:
-    #设置2个灯为红色
+    #Set 2 lights to red
     Board.RGB.setPixelColor(0, Board.PixelColor(255, 0, 0))
     Board.RGB.setPixelColor(1, Board.PixelColor(255, 0, 0))
     Board.RGB.show()
     time.sleep(1)
     
-    #设置2个灯为绿色
+    #Set 2 lights to green
     Board.RGB.setPixelColor(0, Board.PixelColor(0, 255, 0))
     Board.RGB.setPixelColor(1, Board.PixelColor(0, 255, 0))
     Board.RGB.show()
     time.sleep(1)
     
-    #设置2个灯为蓝色
+    #Set 2 lights to blue
     Board.RGB.setPixelColor(0, Board.PixelColor(0, 0, 255))
     Board.RGB.setPixelColor(1, Board.PixelColor(0, 0, 255))
     Board.RGB.show()
     time.sleep(1)
     
-    #设置2个灯为黄色
+    #Set 2 lights to yellow
     Board.RGB.setPixelColor(0, Board.PixelColor(255, 255, 0))
     Board.RGB.setPixelColor(1, Board.PixelColor(255, 255, 0))
     Board.RGB.show()
     time.sleep(1)
 
     if not start:
-        #所有灯关闭
+        #All lights are turned off
         Board.RGB.setPixelColor(0, Board.PixelColor(0, 0, 0))
         Board.RGB.setPixelColor(1, Board.PixelColor(0, 0, 0))
         Board.RGB.show()
-        print('已关闭')
+        print('closed')
         break

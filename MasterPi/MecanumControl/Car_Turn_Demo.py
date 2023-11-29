@@ -12,38 +12,38 @@ if sys.version_info.major == 2:
     
 print('''
 **********************************************************
-*********************功能:小车转向例程**********************
+************Function: Cars steering routine***************
 **********************************************************
 ----------------------------------------------------------
 Official website:https://www.hiwonder.com
 Online mall:https://hiwonder.tmall.com
 ----------------------------------------------------------
 Tips:
- * 按下Ctrl+C可关闭此次程序运行，若失败请多次尝试！
+ * Press Ctrl+C to turn off this program. If you fail, try many times!
 ----------------------------------------------------------
 ''')
 
 chassis = mecanum.MecanumChassis()
 
 start = True
-#关闭前处理
+#Treatment before turning off
 def Stop(signum, frame):
     global start
 
     start = False
-    print('关闭中...')
-    chassis.set_velocity(0,0,0)  # 关闭所有电机
+    print('Closure...')
+    chassis.set_velocity(0,0,0)  # Turn off all motors
     
 
 signal.signal(signal.SIGINT, Stop)
 
 if __name__ == '__main__':
     while start:
-        chassis.set_velocity(0,90,0.3)# 顺时针旋转
+        chassis.set_velocity(0,90,0.3)# clockwise rotation
         time.sleep(3)
-        chassis.set_velocity(0,90,-0.3)# 逆时针旋转
+        chassis.set_velocity(0,90,-0.3)# Anticlockwise rotation
         time.sleep(3)
-    chassis.set_velocity(0,0,0)  # 关闭所有电机
-    print('已关闭')
+    chassis.set_velocity(0,0,0)  # Turn off all motors
+    print('closed')
 
         

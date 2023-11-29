@@ -12,14 +12,14 @@ if sys.version_info.major == 2:
     
 print('''
 **********************************************************
-****************功能:小车前后左右移动例程*********************
+***Function: Move routine before, left, left and right****
 **********************************************************
 ----------------------------------------------------------
 Official website:https://www.hiwonder.com
 Online mall:https://hiwonder.tmall.com
 ----------------------------------------------------------
 Tips:
- * 按下Ctrl+C可关闭此次程序运行，若失败请多次尝试！
+ * Press Ctrl+C to turn off this program. If you fail, try many times!
 ----------------------------------------------------------
 ''')
 
@@ -31,8 +31,8 @@ def Stop(signum, frame):
     global start
 
     start = False
-    print('关闭中...')
-    chassis.set_velocity(0,0,0)  # 关闭所有电机
+    print('Closure...')
+    chassis.set_velocity(0,0,0)  # Turn off all motors
     
 
 signal.signal(signal.SIGINT, Stop)
@@ -47,7 +47,7 @@ if __name__ == '__main__':
         time.sleep(1)
         chassis.set_velocity(50,180,0)
         time.sleep(1)
-    chassis.set_velocity(0,0,0)  # 关闭所有电机
-    print('已关闭')
+    chassis.set_velocity(0,0,0)  # Turn off all motors
+    print('closed')
 
         

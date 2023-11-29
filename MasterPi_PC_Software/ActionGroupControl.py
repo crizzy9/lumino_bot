@@ -18,9 +18,9 @@ def stop_action_group():
 
 def runAction(actNum):
     '''
-    运行动作组，无法发送stop停止信号
-    :param actNum: 动作组名字 ， 字符串类型
-    :param times:  运行次数
+    Operating the action group, you cannot send the STOP stop signal
+    :param actNum: The name of the action group, the string type
+    :param times:  Number of runs
     :return:
     '''
     global runningAction
@@ -52,7 +52,7 @@ def runAction(actNum):
                         stopRunning = False                   
                         break
                     time.sleep(float(act[1])/1000.0)
-                else:   # 运行完才退出
+                else:   # Exit only after running
                     break
             runningAction = False
             

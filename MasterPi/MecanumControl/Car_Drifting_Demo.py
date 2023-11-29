@@ -12,14 +12,14 @@ if sys.version_info.major == 2:
     
 print('''
 **********************************************************
-*******************功能:小车漂移移动例程**********************
+***********Function: Cars drift movement routine**********
 **********************************************************
 ----------------------------------------------------------
 Official website:https://www.hiwonder.com
 Online mall:https://hiwonder.tmall.com
 ----------------------------------------------------------
 Tips:
- * 按下Ctrl+C可关闭此次程序运行，若失败请多次尝试！
+ * Press Ctrl+C to turn off this program. If you fail, try many times!
 ----------------------------------------------------------
 ''')
 
@@ -31,7 +31,7 @@ def Stop(signum, frame):
     global start
 
     start = False
-    print('关闭中...')
+    print('Closure...')
     chassis.set_velocity(0,0,0)  # 关闭所有电机
     
 
@@ -44,6 +44,6 @@ if __name__ == '__main__':
         chassis.set_velocity(50,0,-0.3)
         time.sleep(3)
     chassis.set_velocity(0,0,0)  # 关闭所有电机
-    print('已关闭')
+    print('closed')
 
         

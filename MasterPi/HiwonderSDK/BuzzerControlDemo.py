@@ -3,24 +3,24 @@ import Board
 
 print('''
 **********************************************************
-********功能:幻尔科技树莓派扩展板，蜂鸣器控制例程*********
+********Function: Magic Technology Raspberry Pi expansion board, bee ring control routine*********
 **********************************************************
 ----------------------------------------------------------
 Official website:https://www.hiwonder.com
 Online mall:https://hiwonder.tmall.com
 ----------------------------------------------------------
 Tips:
- * 按下Ctrl+C可关闭此次程序运行，若失败请多次尝试！
+ * Press Ctrl+C to turn off this program. If you fail, try many times!
 ----------------------------------------------------------
 ''')
 
-Board.setBuzzer(0) # 关闭
+Board.setBuzzer(0) # closure
 
-Board.setBuzzer(1) # 打开
-time.sleep(0.1) # 延时
-Board.setBuzzer(0) #关闭
+Board.setBuzzer(1) # Open
+time.sleep(0.1) # Delay
+Board.setBuzzer(0) #closure
 
-time.sleep(1) # 延时
+time.sleep(1) # Delay
 
 Board.setBuzzer(1)
 time.sleep(0.5)
