@@ -29,14 +29,14 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         super(MainWindow, self).__init__()
         self.setupUi(self)                               
         self.setWindowIcon(QIcon(':/images/Arm.png'))
-        self.tabWidget.setCurrentIndex(0)  # 设置默认标签为第一个标签
-        self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)  # 设置选中整行，若不设置默认选中单元格
+        self.tabWidget.setCurrentIndex(0)  # Set the default tag as the first label
+        self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)  # Set the selection of the whole line, if you do not set the default selection of the cell
         self.message = QMessageBox()
         self.resetServos_ = False
         self.path = '/home/spadia/masterpi-car/MasterPi/'
         self.actdir = self.path + "ActionGroups/"
         self.button_controlaction_clicked('reflash')
-        ########################主界面###############################
+        ########################Main interface###############################
         self.t1  = 0
         self.Deviation_file = 'Deviation.yaml'
         self.lab_file = 'lab_config.yaml'
@@ -48,7 +48,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         self.lineEdit_5.setValidator(self.validator1)
         self.lineEdit_6.setValidator(self.validator1)
 
-        # 滑竿同步对应文本框的数值,及滑竿控制相应舵机转动与valuechange函数绑定
+        # Synchronous the value of the text box, and the slider control the corresponding steering gear rotation to the ValueChange function binding
         self.horizontalSlider_1.valueChanged.connect(lambda: self.valuechange1('id1'))
         self.horizontalSlider_3.valueChanged.connect(lambda: self.valuechange1('id3'))
         self.horizontalSlider_4.valueChanged.connect(lambda: self.valuechange1('id4'))
@@ -63,16 +63,18 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         
         self.radioButton_zn.toggled.connect(lambda: self.language(self.radioButton_zn))
         self.radioButton_en.toggled.connect(lambda: self.language(self.radioButton_en))        
-        self.radioButton_zn.setChecked(True)
-        self.chinese = True
+        # self.radioButton_zn.setChecked(True)
+        self.radioButton_en.setChecked(True)
+        # self.chinese = True
+        self.chinese = False
         
-        # tableWidget点击获取定位的信号与icon_position函数（添加运行图标）绑定
+        # TableWidget Click to obtain the positioning signal with the icon_position function (adding a running icon)
         self.tableWidget.pressed.connect(self.icon_position)
 
         self.validator3 = QIntValidator(20, 30000)
         self.lineEdit_time.setValidator(self.validator3)
 
-        # 将编辑动作组的按钮点击时的信号与button_editaction_clicked函数绑定
+        # Tie the signal of the editing action group when clicking on the Button_EditAction_Clicked function binding
 
         self.Button_AddAction.pressed.connect(lambda: self.button_editaction_clicked('addAction'))
         self.Button_DelectAction.pressed.connect(lambda: self.button_editaction_clicked('delectAction'))
@@ -82,7 +84,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         self.Button_MoveUpAction.pressed.connect(lambda: self.button_editaction_clicked('moveUpAction'))
         self.Button_MoveDownAction.pressed.connect(lambda: self.button_editaction_clicked('moveDownAction'))        
 
-        # 将运行及停止运行按钮点击的信号与button_runonline函数绑定
+        # The signal that runs and stops running button is bound to the button_runonline function
         self.Button_Run.clicked.connect(lambda: self.button_run('run'))
         self.Button_OpenActionGroup.pressed.connect(lambda: self.button_flie_operate('openActionGroup'))
         self.Button_SaveActionGroup.pressed.connect(lambda: self.button_flie_operate('saveActionGroup'))
@@ -91,7 +93,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         self.Button_TandemActionGroup.pressed.connect(lambda: self.button_flie_operate('tandemActionGroup'))
         self.Button_ReSetServos.pressed.connect(lambda: self.button_re_clicked('reSetServos'))
         
-        # 将控制动作的按钮点击的信号与action_control_clicked函数绑定
+        # Tie the signal of the control movement button to the action_control_clicked function binding
         self.Button_DelectSingle.pressed.connect(lambda: self.button_controlaction_clicked('delectSingle'))
         self.Button_AllDelect.pressed.connect(lambda: self.button_controlaction_clicked('allDelect'))
         self.Button_RunAction.pressed.connect(lambda: self.button_controlaction_clicked('runAction'))
@@ -105,7 +107,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         self.totalTime = 0
         self.row = 0
              
-        #################################副界面#######################################
+        #################################Side interface#######################################
         
         self.color = 'red'
         self.L_Min = 0
@@ -193,7 +195,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         self.pushButton_quit2_2.setText(_translate("Form", "Exit"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Form", "Camera Tool"))
 
-    # 弹窗提示函数
+    # Population prompt function
     def message_from(self, string):
         try:
             QMessageBox.about(self, '', string)
@@ -205,7 +207,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         self.message_from(string)
 
 
-    # 弹窗提示函数
+    # Population prompt function
     def message_delect(self, string):
         messageBox = QMessageBox()
         messageBox.setWindowTitle(' ')
@@ -214,7 +216,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         messageBox.addButton(QPushButton('Cancel'), QMessageBox.NoRole)
         return messageBox.exec_()
 
-    # 窗口退出
+    # Window exit
     def closeEvent(self, e):        
         result = QMessageBox.question(self,
                                     "关闭窗口提醒",
@@ -286,7 +288,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
     def closeqdialog(self):
         self.qdi.accept()
 
-    # 滑竿同步对应文本框的数值,及滑竿控制相应舵机转动
+    # Synchronous the value of the corresponding text box, and the slider control the corresponding steering gear rotation
     def valuechange1(self, name):
         if not self.resetServos_:
             self.deviation_data = self.get_yaml_data(self.path + self.Deviation_file)
@@ -313,7 +315,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                 PWM.setPWMServoPulse(6, servoAngle6 + self.deviation_data[str(6)], 20)
             
                 
-    # 滑竿同步对应文本框的数值,及滑竿控制相应舵机转动
+    # Synchronous the value of the corresponding text box, and the slider control the corresponding steering gear rotation
     def valuechange2(self, name):
         if not self.resetServos_:
             if name == 'd1':
@@ -338,7 +340,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                 self.label_d6.setText(str(self.devNew[4]))
                 PWM.setPWMServoPulse(6, self.horizontalSlider_6.value() + self.devNew[4], 20)      
 
-    # 复位按钮点击事件
+    # Reset button click event
     def button_re_clicked(self, name):
         self.resetServos_ = True
         if name == 'reSetServos':
@@ -373,7 +375,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
 #             self.horizontalSlider_16.setValue(0) 
             self.resetServos_ = False
             
-    # 选项卡选择标签状态，获取对应舵机数值
+    # Select the tag status of the tab to get the corresponding steering gear value
     def tabindex(self, index):       
         return  [str(self.horizontalSlider_1.value()), 
                  str(self.horizontalSlider_3.value()),
@@ -387,7 +389,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
             data.append(str(self.tableWidget.item(index, j).text()))
         return data
     
-    # 往tableWidget表格添加一行数据的函数
+    # Add a line of data to the tableWidget form
     def add_line(self, item, timer, id1, id3, id4, id5, id6):
         self.tableWidget.setItem(item, 1, QtWidgets.QTableWidgetItem(str(item + 1)))
         self.tableWidget.setItem(item, 2, QtWidgets.QTableWidgetItem(timer))
@@ -397,7 +399,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         self.tableWidget.setItem(item, 6, QtWidgets.QTableWidgetItem(id5))
         self.tableWidget.setItem(item, 7, QtWidgets.QTableWidgetItem(id6))
 
-    # 在定位行添加运行图标按钮
+    # Add an icon button to the positioning line
     def icon_position(self):
         toolButton_run = QtWidgets.QToolButton()
         icon = QtGui.QIcon()
@@ -449,28 +451,28 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                 self.message_From('Running error')
         self.resetServos_ = False
 
-    # 编辑动作组按钮点击事件
+    # Edit action set button click event
     def button_editaction_clicked(self, name):
         list = self.tabindex(self.tabWidget.currentIndex())
         RowCont = self.tableWidget.rowCount()
         item = self.tableWidget.currentRow()
                    
-        if name == 'addAction':    # 添加动作
+        if name == 'addAction':    # Add action
             if int(self.lineEdit_time.text()) < 20:
                 if self.chinese:
                     self.message_From('运行时间必须大于20')
                 else:
                     self.message_From('Run time must greater than 20')
                 return
-            self.tableWidget.insertRow(RowCont)    # 增加一行
-            self.tableWidget.selectRow(RowCont)    # 定位最后一行为选中行
+            self.tableWidget.insertRow(RowCont)    # One -line
+            self.tableWidget.selectRow(RowCont)    # Positioning the last behavior selection
             self.add_line(RowCont, str(self.lineEdit_time.text()), list[0], list[1], list[2], list[3], list[4])
             self.totalTime += int(self.lineEdit_time.text())
             self.label_TotalTime.setText(str((self.totalTime)/1000.0))
-        if name == 'delectAction':    # 删除动作
+        if name == 'delectAction':    # Delete action
             if RowCont != 0:
                 self.totalTime -= int(self.tableWidget.item(item, 2).text())
-                self.tableWidget.removeRow(item)  # 删除选定行                
+                self.tableWidget.removeRow(item)  # Delete selection                
                 self.label_TotalTime.setText(str((self.totalTime)/1000.0))
         if name == 'delectAllAction':
             result = self.message_delect('此操作会删除列表中的所有动作，是否继续？')
@@ -481,7 +483,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                 self.label_TotalTime.setText(str(self.totalTime))
             else:
                 pass          
-        if name == 'updateAction':    # 更新动作
+        if name == 'updateAction':    # Update action
             if int(self.lineEdit_time.text()) < 20:
                 if self.chinese:
                     self.message_From('运行时间必须大于20')
@@ -494,7 +496,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
             for i in range(RowCont):
                 self.totalTime += int(self.tableWidget.item(i,2).text())
             self.label_TotalTime.setText(str((self.totalTime)/1000.0))            
-        if name == 'insertAction':    # 插入动作
+        if name == 'insertAction':    # Insertion action
             if item == -1:
                 return
             if int(self.lineEdit_time.text()) < 20:
@@ -504,7 +506,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                     self.message_From('Run time must greater than 20')
                 return
 
-            self.tableWidget.insertRow(item)       # 插入一行
+            self.tableWidget.insertRow(item)       # Insert a line
             self.tableWidget.selectRow(item)
             self.add_line(item, str(self.lineEdit_time.text()), list[0], list[1], list[2], list[3], list[4])
             self.totalTime += int(self.lineEdit_time.text())
@@ -526,12 +528,12 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
             self.add_line(item, downlist_data[0], downlist_data[1], downlist_data[2], downlist_data[3], downlist_data[4], downlist_data[5])
             self.tableWidget.selectRow(item + 1)
                              
-        for i in range(self.tableWidget.rowCount()):    #刷新编号值
+        for i in range(self.tableWidget.rowCount()):    #Refresh the number value
             self.tableWidget.item(i , 2).setFlags(self.tableWidget.item(i , 2).flags() & ~Qt.ItemIsEditable)
             self.tableWidget.setItem(i,1,QtWidgets.QTableWidgetItem(str(i + 1)))
         self.icon_position()
      
-    # 在线运行按钮点击事件
+    # Online run button click event
     def button_run(self, name):
         if self.tableWidget.rowCount() == 0:
             if self.chinese:
@@ -640,7 +642,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                 self.message_From('Run error!')              
         self.resetServos_ = False
 
-    # 文件打开及保存按钮点击事件
+    # File open and save button click event
     def button_flie_operate(self, name):
         try:            
             if name == 'openActionGroup':
@@ -648,11 +650,11 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                 dig_o.setFileMode(QFileDialog.ExistingFile)
                 dig_o.setNameFilter('d6a Flies(*.d6a)')
                 openfile = dig_o.getOpenFileName(self, 'OpenFile', '', 'd6a Flies(*.d6a)')
-                # 打开单个文件
-                # 参数一：设置父组件；参数二：QFileDialog的标题
-                # 参数三：默认打开的目录，“.”点表示程序运行目录，/表示当前盘符根目录
-                # 参数四：对话框的文件扩展名过滤器Filter，比如使用 Image files(*.jpg *.gif) 表示只能显示扩展名为.jpg或者.gif文件
-                # 设置多个文件扩展名过滤，使用双引号隔开；“All Files(*);;PDF Files(*.pdf);;Text Files(*.txt)”
+                # Open a single file
+                # Parameter 1: Set parent component; Parameter 2: The title of QFILEDIALOG
+                # Parameter three: The directory opened by default, "." Points represent the program run
+                # Parameter 4: File expansion filter Filter in the dialog box, such as using Image Files ( *. JPG *.gif) to indicate that the extension can only be displayed. Jpg or .gif files.
+                # Set multiple file extension filtering and separate it with dual quotes; "all files (*);;; PDF FILES (*. PDF);; Text Files (*. TXT)" ""
                 path = openfile[0]
                 try:
                     if path != '':
@@ -858,7 +860,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         else:
             self.comboBox_action.clear()
     
-    # 控制动作组按钮点击事件
+    # Control action set button click event
     def button_controlaction_clicked(self, name):
         if name == 'delectSingle':
             if str(self.comboBox_action.currentText()) != "":
@@ -873,10 +875,10 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
             else:
                 pass
             self.reflash_action()
-        if name == 'runAction':   # 动作组运行
+        if name == 'runAction':   # Action group running
             runActionGroup(self.comboBox_action.currentText())
             
-        if name == 'stopAction':   # 停止运行
+        if name == 'stopAction':   # Stop running
             stopActionGroup()
             
         if name == 'reflash':
@@ -892,21 +894,21 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
             sys.exit()
 
     ################################################################################################
-    #获取面积最大的轮廓
+    #Obtain the largest outline
     def getAreaMaxContour(self,contours) :
             contour_area_temp = 0
             contour_area_max = 0
             area_max_contour = None;
 
             for c in contours :
-                contour_area_temp = math.fabs(cv2.contourArea(c)) #计算面积
-                if contour_area_temp > contour_area_max : #新面积大于历史最大面积就将新面积设为历史最大面积
+                contour_area_temp = math.fabs(cv2.contourArea(c)) #Calculation area
+                if contour_area_temp > contour_area_max : #The new area is greater than the maximum area of history.
                     contour_area_max = contour_area_temp
-                    if contour_area_temp > 10: #只有新的历史最大面积大于10,才是有效的最大面积
-                                               #就是剔除过小的轮廓
+                    if contour_area_temp > 10: #Only the newly maximum area is greater than 10, which is the most effective area
+                                               #It is to remove the small outline
                         area_max_contour = c
 
-            return area_max_contour #返回得到的最大面积，如果没有就是 None
+            return area_max_contour #The maximum area received by returning, if there is no NONE
     
     def show_image(self):
         if self.camera_opened:
