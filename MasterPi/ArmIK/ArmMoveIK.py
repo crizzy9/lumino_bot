@@ -11,15 +11,15 @@ from ArmIK.Transform import getAngle
 from mpl_toolkits.mplot3d import Axes3D
 from HiwonderSDK.Board import setBusServoPulse,getBusServoPulse, setPWMServoPulse, getPWMServoPulse
 
-#机械臂根据逆运动学算出的角度进行移动
+#The robotic arm moves from the perspective of counter -exercise learning
 ik = IK('arm')
-#设置连杆长度
+#Set connecting rod length
 l1 = ik.l1
 l4 = ik.l4
 ik.setLinkLength(L1=l1+1.3, L4=l4)
 
 class ArmIK:
-    servo3Range = (500, 2500.0, 0, 180.0) #脉宽， 角度
+    servo3Range = (500, 2500.0, 0, 180.0) #Pulse wide, angle
     servo4Range = (500, 2500.0, 0, 180.0)
     servo5Range = (500, 2500.0, 0, 180.0)
     servo6Range = (500, 2500.0, 0, 180.0)
@@ -28,7 +28,7 @@ class ArmIK:
         self.setServoRange()
 
     def setServoRange(self, servo3_Range=servo3Range, servo4_Range=servo4Range, servo5_Range=servo5Range, servo6_Range=servo6Range):
-        # 适配不同的舵机
+        # Adapt to different motor engines
         self.servo3Range = servo3_Range
         self.servo4Range = servo4_Range
         self.servo5Range = servo5_Range
@@ -39,7 +39,7 @@ class ArmIK:
         self.servo6Param = (self.servo6Range[1] - self.servo6Range[0]) / (self.servo6Range[3] - self.servo6Range[2])
 
     def transformAngelAdaptArm(self, theta3, theta4, theta5, theta6):
-        #将逆运动学算出的角度转换为舵机对应的脉宽值
+        #Convert the angle of the counter -exercise to the view of the pulse width corresponding to the steering gear
         servo3 = int(round(theta3 * self.servo3Param + (self.servo3Range[1] + self.servo3Range[0])/2))
         if servo3 > self.servo3Range[1] or servo3 < self.servo3Range[0]:
             logger.info('servo3(%s)超出范围(%s, %s)', servo3, self.servo3Range[0], self.servo3Range[1])
@@ -65,7 +65,7 @@ class ArmIK:
         return {"servo3": servo3, "servo4": servo4, "servo5": servo5, "servo6": servo6}
 
     def servosMove(self, servos, movetime=None):
-        #驱动3,4,5,6号舵机转动
+        #Drive 3,4,5,6 steering gear rotation
         time.sleep(0.02)
         if movetime is None:
             max_d = 0
@@ -84,14 +84,14 @@ class ArmIK:
         return movetime
 
     def setPitchRange(self, coordinate_data, alpha1, alpha2, da = 1):
-        #给定坐标coordinate_data和俯仰角的范围alpha1，alpha2, 自动在范围内寻找到的合适的解
-        #如果无解返回False,否则返回对应舵机角度,俯仰角
-        #坐标单位cm， 以元组形式传入，例如(0, 5, 10)
-        #da为俯仰角遍历时每次增加的角度
+        #Given the range of coordinate coordinate_data and pitch angle Alpha1, alpha2, and the appropriate solution found in the range
+        #If there is no solution to return False, otherwise return to the corresponding turbine angle, pitch angle
+        #The coordinate unit CM is passed in in the form of a meta -group, for example (0, 5, 10)
+        #DA is the angle of the pitch angle that takes time to increase every time
         x, y, z = coordinate_data
         if alpha1 >= alpha2:
             da = -da
-        for alpha in np.arange(alpha1, alpha2, da):#遍历求解
+        for alpha in np.arange(alpha1, alpha2, da):#Traversal
             result = ik.getRotationAngle((x, y, z), alpha)
             if result:
                 theta3, theta4, theta5, theta6 = result['theta3'], result['theta4'], result['theta5'], result['theta6']               
@@ -102,12 +102,12 @@ class ArmIK:
         return False
 
     def setPitchRangeMoving(self, coordinate_data, alpha, alpha1, alpha2, movetime = None):
-        #给定坐标coordinate_data和俯仰角alpha,以及俯仰角范围的范围alpha1, alpha2，自动寻找最接近给定俯仰角的解，并转到目标位置
-        #如果无解返回False,否则返回舵机角度、俯仰角、运行时间
-        #坐标单位cm， 以元组形式传入，例如(0, 5, 10)
-        #alpha为给定俯仰角
-        #alpha1和alpha2为俯仰角的取值范围
-        #movetime为舵机转动时间，单位ms, 如果不给出时间，则自动计算
+        #Given the coordinate coordinate_data and pitch angle Alpha, and the range of the pitch angle range Alpha1, Alpha2, automatically find solutions closest to the pitch angle, and turn to the target location
+        #If there is no solution to return FALSE, otherwise returns the angle, pitch angle, and running time of the steering gear
+        #The coordinate unit CM is passed in in the form of a meta -group, for example (0, 5, 10)
+        #Alpha is a given pitch angle
+        #Alpha1 and alpha2 are the value range of the pitch angle
+        #Movetime is the turning time of the steering gear.
         x, y, z = coordinate_data
         result1 = self.setPitchRange((x, y, z), alpha, alpha1)
         result2 = self.setPitchRange((x, y, z), alpha, alpha2)

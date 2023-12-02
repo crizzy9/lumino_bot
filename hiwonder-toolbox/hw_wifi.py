@@ -205,7 +205,7 @@ if __name__ == "__main__":
                     logger.error(msg)
                     return 0
             while True:
-                # 跑到这里应该已经成功连上wifi了。什么事情都不用干。
+                # I have successfully connected to WiFi here.Don't do anything.
                 time.sleep(1)
             return -1
         else:
