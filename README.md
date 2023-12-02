@@ -7,3 +7,6 @@
 
 ## Adjusting servos
 Make minor adjustments to a servo using Read and Save Deviation mechanism
+
+## Using Wifi
+[wifi instructions](https://drive.google.com/drive/folders/1sNx4BD5YbgNLipkGx8u_dNLvZyD7gXnA)
