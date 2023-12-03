@@ -6,7 +6,10 @@
 [Master Pi Image Drive](https://drive.google.com/drive/folders/1HFL5PVNSByu93iu684BVlrJzYYIZY8RH?usp=drive_link)
 
 ## Adjusting servos
+
 Make minor adjustments to a servo using Read and Save Deviation mechanism
+[Deviation Adjustments](https://drive.google.com/drive/folders/17HpnMlfOHrpZfOgUnjLjHC9Nm85yQIAx)
 
 ## Using Wifi
-[wifi instructions](https://drive.google.com/drive/folders/1sNx4BD5YbgNLipkGx8u_dNLvZyD7gXnA)
+
+[Wifi instructions](https://drive.google.com/drive/folders/1sNx4BD5YbgNLipkGx8u_dNLvZyD7gXnA)
