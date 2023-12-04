@@ -1,0 +1,13 @@
+[Unit]
+Description=Start MasterPi
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+ExecStart=/home/pi/MasterPi/MasterPi.py 
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target

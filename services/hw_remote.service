@@ -1,0 +1,15 @@
+[Unit]
+Description=remote
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+ExecStart=/usr/bin/python3 /home/pi/hiwonder-toolbox/hw_remote.py
+ExecStop=/bin/systemctl kill hw_remote
+
+[Install]
+WantedBy=multi-user.target
+
+
+ 

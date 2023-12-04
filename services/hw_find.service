@@ -1,0 +1,16 @@
+
+[Unit]
+Description=find wifi
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+ExecStart=/usr/bin/python3 /home/pi/hiwonder-toolbox/hw_find.py -t MasterPi
+ExecStop=/bin/systemctl kill hw_find
+
+[Install]
+WantedBy=multi-user.target
+
+
+ 

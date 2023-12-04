@@ -1,0 +1,15 @@
+[Unit]
+Description=key_control
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+ExecStart=/usr/bin/python3 /home/pi/hiwonder-toolbox/hw_button_scan.py
+ExecStop=/bin/systemctl kill hw_button_scan
+
+[Install]
+WantedBy=multi-user.target
+
+
+ 
