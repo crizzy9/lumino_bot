@@ -35,7 +35,7 @@ def load_config():
     
     lab_data = yaml_handle.get_yaml_data(yaml_handle.lab_file_path)
 
-__target_color = ('red',)
+__target_color = ('green',)
 # Set the detection color
 def setTargetColor(target_color):
     global __target_color
@@ -323,7 +323,7 @@ if __name__ == '__main__':
     start()
     setWheel(**vars(opt))
     __isRunning = True
-    __target_color = ('red')
+    __target_color = ('green')
     signal.signal(signal.SIGINT, Stop)
     cap = cv2.VideoCapture(0)
     while __isRunning:
