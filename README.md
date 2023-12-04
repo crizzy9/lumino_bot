@@ -13,3 +13,7 @@ Make minor adjustments to a servo using Read and Save Deviation mechanism
 ## Using Wifi
 
 [Wifi instructions](https://drive.google.com/drive/folders/1sNx4BD5YbgNLipkGx8u_dNLvZyD7gXnA)
+```
+ls -la /etc/systemd/system
+ls -la /lib/systemd/system
+```
