@@ -92,9 +92,6 @@ def MotorStop():
     Board.setMotor(3, 0)
     Board.setMotor(4, 0)
 
-def getBatteryVoltage():
-    return Board.getBattery()/1000.0
-
 #Set the RGB light color of the extension to make it consistent with the color to be tracked
 def set_rgb(color):
     if color == "red":
@@ -328,8 +325,6 @@ if __name__ == '__main__':
     __isRunning = True
     __target_color = ('green')
     signal.signal(signal.SIGINT, Stop)
-    volts = getBatteryVoltage()
-    print(f'Battery voltage: {volts:.2f} V')
     cap = cv2.VideoCapture(0)
     while __isRunning:
         ret,img = cap.read()
