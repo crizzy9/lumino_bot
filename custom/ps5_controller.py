@@ -31,7 +31,7 @@ dualsense.cross_pressed += cross_down
 dualsense.circle_pressed += circle_down
 dualsense.dpad_down += dpad_down
 dualsense.left_joystick_changed += joystick
-dualsense.l2_pressed += l2_down
+dualsense.l2_changed += l2_down
 
 # read controller state until R1 is pressed
 while not dualsense.state.R1:
