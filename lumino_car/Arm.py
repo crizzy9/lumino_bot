@@ -9,7 +9,7 @@ import time
 import json
 import yaml
 import sqlite3
-import lumino_car.addcolor
+from lumino_car.addcolor import Ui_Dialog
 import requests
 import threading
 import lumino_car.resource_rc
@@ -263,7 +263,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
     
     def addcolor(self):
         self.qdi = QDialog()
-        self.d = addcolor.Ui_Dialog()
+        self.d = Ui_Dialog()
         self.d.setupUi(self.qdi)
         self.qdi.show()
         self.d.pushButton_ok.clicked.connect(self.getcolor)
