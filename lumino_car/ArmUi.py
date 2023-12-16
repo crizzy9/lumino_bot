@@ -1113,4 +1113,4 @@ class Ui_Form(object):
         self.pushButton_quit2_2.setText(_translate("Form", "退出"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Form", "摄像头工具"))
 
-import resource_rc
+import lumino_car.resource_rc
