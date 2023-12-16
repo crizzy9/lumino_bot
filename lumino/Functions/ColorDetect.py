@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # coding=utf8
 import sys
-sys.path.append('/home/spadia/masterpi-car/lumino/')
+sys.path.append('/home/spadia/lumino_bot/lumino/')
 import cv2
 import time
 import threading

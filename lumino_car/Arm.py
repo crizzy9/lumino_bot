@@ -33,7 +33,7 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
         self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)  # Set the selection of the whole line, if you do not set the default selection of the cell
         self.message = QMessageBox()
         self.resetServos_ = False
-        self.path = '/home/spadia/masterpi-car/lumino/'
+        self.path = '/home/spadia/lumino_bot/lumino/'
         self.actdir = self.path + "ActionGroups/"
         self.button_controlaction_clicked('reflash')
         ########################Main interface###############################

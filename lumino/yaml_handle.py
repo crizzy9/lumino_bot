@@ -1,6 +1,6 @@
 import yaml
-lab_file_path = '/home/spadia/masterpi-car/lumino/lab_config.yaml'
-Deviation_file_path = '/home/spadia/masterpi-car/lumino/Deviation.yaml'
+lab_file_path = '/home/spadia/lumino_bot/lumino/lab_config.yaml'
+Deviation_file_path = '/home/spadia/lumino_bot/lumino/Deviation.yaml'
 
 def get_yaml_data(yaml_file):
     file = open(yaml_file, 'r', encoding='utf-8')

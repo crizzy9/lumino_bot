@@ -1,5 +1,6 @@
 
-# Master Pi Car
+# Lumino Bot
+Inspired from Master Pi by Hiwonder
 
 [Master Pi Instructions Drive](https://drive.google.com/drive/folders/19wOOF4T_N37y_SSklHbo7DnL76_P_NWb?usp=drive_link)
 

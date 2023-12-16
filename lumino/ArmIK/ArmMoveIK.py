@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # encoding:utf-8
 import sys
-sys.path.append('/home/spadia/masterpi-car/lumino/')
+sys.path.append('/home/spadia/lumino_bot/lumino/')
 import time
 import numpy as np
 from math import sqrt

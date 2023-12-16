@@ -5,7 +5,7 @@ Description=key_control
 Type=simple
 Restart=always
 RestartSec=5
-ExecStart=/usr/bin/python3 /home/spadia/masterpi-car/lumino_wifi_toolbox/hw_button_scan.py
+ExecStart=/usr/bin/python3 /home/spadia/lumino_bot/lumino_wifi_toolbox/hw_button_scan.py
 ExecStop=/bin/systemctl kill hw_button_scan
 
 [Install]

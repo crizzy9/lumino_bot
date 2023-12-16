@@ -49,7 +49,7 @@ if __name__ == "__main__":
         else:
             if servo_test:
                 servo_test = False
-                os.system("python3 /home/spadia/masterpi-car/lumino/HiwonderSDK/Servo_test.py")
+                os.system("python3 /home/spadia/lumino_bot/lumino/HiwonderSDK/Servo_test.py")
                     
             count = 0
             if not key1_pressed:

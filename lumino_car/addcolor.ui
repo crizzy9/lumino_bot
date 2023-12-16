@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>新增颜色</string>
+   <string>New color</string>
   </property>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">

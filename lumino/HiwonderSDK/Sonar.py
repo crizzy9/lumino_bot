@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append('/home/spadia/masterpi-car/lumino/')
+sys.path.append('/home/spadia/lumino_bot/lumino/')
 import time
 import HiwonderSDK.Board
 from smbus2 import SMBus, i2c_msg

@@ -5,7 +5,7 @@ Description=Start MasterPi
 Type=simple
 Restart=always
 RestartSec=5
-ExecStart=/home/spadia/masterpi-car/lumino/MasterPi.py 
+ExecStart=/home/spadia/lumino_bot/lumino/MasterPi.py 
 StandardOutput=null
 StandardError=null
 
