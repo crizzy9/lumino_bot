@@ -19,3 +19,12 @@ Make minor adjustments to a servo using Read and Save Deviation mechanism
 ls -la /etc/systemd/system
 ls -la /lib/systemd/system
 ```
+
+## Running the App
+
+if runapp doesnt work use `chmod +x runapp.py`
+
+```sh
+cd lumino_bot
+python3 runapp.py arm
+```
