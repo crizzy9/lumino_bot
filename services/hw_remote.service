@@ -5,7 +5,7 @@ Description=remote
 Type=simple
 Restart=always
 RestartSec=5
-ExecStart=/usr/bin/python3 /home/pi/hiwonder-toolbox/hw_remote.py
+ExecStart=/usr/bin/python3 /home/spadia/mastpi-car/lumino_wifi_toolbox/hw_remote.py
 ExecStop=/bin/systemctl kill hw_remote
 
 [Install]

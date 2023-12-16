@@ -6,7 +6,7 @@ Description=find wifi
 Type=simple
 Restart=always
 RestartSec=5
-ExecStart=/usr/bin/python3 /home/pi/hiwonder-toolbox/hw_find.py -t MasterPi
+ExecStart=/usr/bin/python3 /home/spadia/masterpi-car/lumino_wifi_toolbox/hw_find.py -t MasterPi
 ExecStop=/bin/systemctl kill hw_find
 
 [Install]

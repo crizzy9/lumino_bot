@@ -1,8 +1,8 @@
 import sys
 import runpy
 
-path_arm = 'MasterPi_PC_Software/Arm.py'
-# path_car = 'MasterPi_PC_Software/Car.py'
+path_arm = 'lumino_car/Arm.py'
+# path_car = 'lumino_car/Car.py'
 
 mode = sys.argv.pop(1)
 

@@ -5,7 +5,7 @@ Description=start hw-wifi
 Type=simple
 Restart=always
 RestartSec=5
-ExecStart=/usr/bin/python3 /home/pi/hiwonder-toolbox/hw_wifi.py
+ExecStart=/usr/bin/python3 /home/masterpi-car/lumino_wifi_toolbox/hw_wifi.py
 ExecStop=/bin/systemctl kill hw_wifi
 
 [Install]
