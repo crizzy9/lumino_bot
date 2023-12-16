@@ -12,10 +12,10 @@ import sqlite3
 import lumino_car.addcolor
 import requests
 import threading
-import resource_rc
+import lumino_car.resource_rc
 from socket import *
-import SetPWMServo as PWM
-from ServoCmd import *
+import lumino_car.SetPWMServo as PWM
+from lumino_car.ServoCmd import *
 from ArmUi import Ui_Form
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
