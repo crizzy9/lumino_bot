@@ -4,7 +4,7 @@ import os
 import time
 import threading
 import sqlite3 as sql
-from SetPWMServo import *
+from lumino_car.SetPWMServo import *
 sys.path.append('/home/spadia/masterpi-car/lumino/')
 import yaml_handle
 

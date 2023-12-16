@@ -1,6 +1,6 @@
 import sys
 import threading
-import ActionGroupControl as AGC
+import lumino_car.ActionGroupControl as AGC
 
 def setServoPulse(id, pulse, use_time):
     setPWMServoPulse(id, pulse, use_time)
