@@ -16,7 +16,7 @@ import lumino_car.resource_rc
 from socket import *
 import lumino_car.SetPWMServo as PWM
 from lumino_car.ServoCmd import *
-from ArmUi import Ui_Form
+from lumino_car.ArmUi import Ui_Form
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
