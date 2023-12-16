@@ -2,7 +2,7 @@
 #coding:utf8
 
 #HW_WIFI_MODE = 1                     #WiFi’s working mode, 1 is AP mode, 2 is STA mode
-HW_WIFI_AP_SSID = 'MasterPi'          #SSID in AP mode.Characters and numbers composition
+HW_WIFI_AP_SSID = 'LuminoBot'          #SSID in AP mode.Characters and numbers composition
 HW_WIFI_AP_PASSWORD = 'password'      #WIFI passwords, characters, and numbers in AP mode
 #HW_WIFI_AP_GATEWAY = '192.168.149.1' #The IP in the AP mode, the default is 192.168.149.1. If this item is modified, the mobile phone APP will not be able to enter the WiFi configuration interface
 HW_WIFI_FREQ_BAND = 5                 #The WIFI frequency in AP mode is directly assigned to 2.4 or 5 corresponding 2.4g and 5G

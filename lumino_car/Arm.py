@@ -9,7 +9,7 @@ import time
 import json
 import yaml
 import sqlite3
-import addcolor
+import lumino_car.addcolor
 import requests
 import threading
 import resource_rc
