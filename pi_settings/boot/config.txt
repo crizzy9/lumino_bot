@@ -20,14 +20,18 @@ disable_overscan=1
 # overscan.
 #framebuffer_width=1280
 #framebuffer_height=720
+#framebuffer_width=2560
+#framebuffer_height=1440
+#max_framebuffer_width=2560
+#max_framebuffer_height=1440
 
 # uncomment if hdmi display is not detected and composite is being output
 hdmi_force_hotplug=1
 
 # uncomment to force a specific HDMI mode (this will force VGA)
-#hdmi_group=2
-#hdmi_mode=82
-hdmi_group=1
+hdmi_group=2
+hdmi_mode=82
+#hdmi_mode=1
 
 # uncomment to force a HDMI mode rather than DVI. This can make audio work in
 # DMT (computer monitor) modes
@@ -58,10 +62,19 @@ dtparam=i2c_arm=on
 # Enable audio (loads snd_bcm2835)
 dtparam=audio=on
 
+# set overclock
+#gpu_freq=500
+#over_voltage=2
+
+# additional settings
+# hdmi_ignore_edid=0xa500080
+# hdmi_pixel_freq_limit=204792000
+
 [pi4]
 # Enable DRM VC4 V3D driver on top of the dispmanx display stack
 dtoverlay=vc4-fkms-v3d
 max_framebuffers=2
+#max_framebuffers=1
 
 [all]
 #dtoverlay=vc4-fkms-v3d
@@ -71,3 +84,4 @@ dtoverlay=pi3-miniuart-bt
 dtparam=i2c1_baudrate=40000
 start_x=1
 gpu_mem=128
+#gpu_mem=256
