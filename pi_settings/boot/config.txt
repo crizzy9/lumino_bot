@@ -29,9 +29,11 @@ disable_overscan=1
 hdmi_force_hotplug=1
 
 # uncomment to force a specific HDMI mode (this will force VGA)
-hdmi_group=2
-hdmi_mode=82
-#hdmi_mode=1
+#hdmi_group=2
+#hdmi_mode=82
+# set to group cea with 1 and 2 for dvi/dmt tvservice -m CEA
+hdmi_mode=1
+hdmi_mode=16
 
 # uncomment to force a HDMI mode rather than DVI. This can make audio work in
 # DMT (computer monitor) modes
@@ -83,5 +85,5 @@ dtoverlay=pi3-miniuart-bt
 
 dtparam=i2c1_baudrate=40000
 start_x=1
-gpu_mem=128
-#gpu_mem=256
+#gpu_mem=128
+gpu_mem=256
