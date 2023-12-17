@@ -734,11 +734,11 @@ class MainWindow(QtWidgets.QWidget, Ui_Form):
                 dig_t.setFileMode(QFileDialog.ExistingFile)
                 dig_t.setNameFilter('d6a Flies(*.d6a)')
                 openfile = dig_t.getOpenFileName(self, 'OpenFile', '', 'd6a Flies(*.d6a)')
-                # 打开单个文件
-                # 参数一：设置父组件；参数二：QFileDialog的标题
-                # 参数三：默认打开的目录，“.”点表示程序运行目录，/表示当前盘符根目录
-                # 参数四：对话框的文件扩展名过滤器Filter，比如使用 Image files(*.jpg *.gif) 表示只能显示扩展名为.jpg或者.gif文件
-                # 设置多个文件扩展名过滤，使用双引号隔开；“All Files(*);;PDF Files(*.pdf);;Text Files(*.txt)”
+                # Open a single file
+                # Parameter 1: Set parent component; Parameter two: title of QFileDialog
+                # Parameter three: The directory opened by default, "." Points represent the program running directory,/
+                # Parameter 4: File File File Filter Filter, such as using Image FILES ( *. JPG *.gif) to indicate that it can only display the extension name .jpg or .gif file
+                # Set multiple file extension filtering and separate it with dual quotes; "All files (*);;; PDF FILES (*. PDF);; Text Files (*. TXT)"
                 path = openfile[0]
                 try:
                     if path != '':
