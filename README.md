@@ -6,6 +6,13 @@ Inspired from Master Pi by Hiwonder
 
 [Master Pi Image Drive](https://drive.google.com/drive/folders/1HFL5PVNSByu93iu684BVlrJzYYIZY8RH?usp=drive_link)
 
+## Installation
+
+```sh
+chmod +x ./install
+./install
+```
+
 ## Adjusting servos
 
 Make minor adjustments to a servo using Read and Save Deviation mechanism
@@ -26,4 +33,16 @@ ls -la /lib/systemd/system
 cd lumino_bot
 chmod +x runapp.py
 ./runapp.py arm
+cd lumino_bot
+
+// to run qt5 gui
+sudo lumino_car/Arm.py
+// or
+chmod +x runapp.py
+python3 runapp.py arm
+
+
+// if doesnt work set dtparam=i2c_arm=on in /boot/config.txt
+vim /boot/config.txt
+dtparam=i2c_arm=on
 ```
